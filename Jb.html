@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Portofolio Interaktif</title>
+</head>
+<body>
+
+    <header>
+        <h1>JB</h1>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#blog">blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Your introduction goes here.</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="project" onclick="showProjectInfo('Project 1', 'Project description goes here.')">
+            <img src="danu.jpg" alt="Project 1">
+            <p>Project description goes here.</p>
+        </div>
+        <!-- Add more project sections as needed -->
+    </section>
+    
+    <section id="blog" class="animated-section">
+        <h2>Blog</h2>
+        <article class="blog-post">
+            <h3>Blog Post Title</h3>
+            <p>Content of your blog post goes here.</p>
+        </article>
+        <!-- Add more blog posts as needed -->
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>You can reach me at your@email.com</p>
+    </section>
+<!--popup new-->
+ <div class="overlay" onclick="closeOverlay()"></div>
+    <div class="popup" id="projectPopup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2 id="popupTitle"></h2>
+        <p id="popupDescription"></p>
+    </div>
+<!--- contact -->
+<div class="contact-form-container">
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="submitForm(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+<!--contact-->
+    <script>
+    function showProjectInfo(title, description) {
+    document.getElementById("popupTitle").innerText = title;
+    document.getElementById("popupDescription").innerText = description;
+    
+    document.querySelector(".overlay").style.display = "block";
+    document.querySelector(".popup").style.display = "block";
+}
+
+function closePopup() {
+    document.querySelector(".overlay").style.display = "none";
+    document.querySelector(".popup").style.display = "none";
+}
+</script>
+<script>
+function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('show');
+}
+</script>
+<script>
+  function submitForm(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    console.log('Name:', name);
+    console.log('Email:', email);
+    console.log('Message:', message);
+
+    alert('from success!');
+    document.getElementById('contactForm').reset();
+}
+</script>
+</body>
+</html>
